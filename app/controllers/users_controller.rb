@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def create
     user = User.new(person_params)
     if user.save
-      render json: user
+      token = Knock::AuthToken.new(payload: {sub: user.id }).token
+      render json: { user: UserSerializer.new(user), token: token}
     else
       render json: { status: "error"}
     end

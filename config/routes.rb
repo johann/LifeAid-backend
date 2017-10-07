@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #   end
   # end
   post 'user_token' => 'user_token#create'
+  post 'login' => 'user_token#login'
   post 'users' => 'users#create'
   get 'hello', to: 'application#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
